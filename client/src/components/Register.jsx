@@ -21,7 +21,7 @@ const Register = () => {
 
   return (
     <form className="register" onSubmit={register}>
-      <h1>Register to Enter the Oasis...</h1>
+      <h1>Register for the Oasis...</h1>
       <input
         type="text"
         placeholder="username"

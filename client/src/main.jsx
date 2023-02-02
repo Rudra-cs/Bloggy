@@ -6,6 +6,7 @@ import "./index.css";
 import "./components/Error";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import CreatePost from "./components/CreatePost";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/create",
+        element: <CreatePost />,
       },
     ],
   },

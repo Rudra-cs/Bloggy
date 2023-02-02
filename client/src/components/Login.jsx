@@ -2,11 +2,14 @@ import React from "react";
 import "../App.css";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../UserContext";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
+  const { setUserInfo } = useContext(UserContext);
 
   async function login(ev) {
     ev.preventDefault();
@@ -18,7 +21,10 @@ const Login = () => {
     });
 
     if ((await response).ok) {
-      setRedirect(true);
+      (await response).json().then((userInfo) => {
+        setUserInfo(userInfo);
+        setRedirect(true);
+      });
     } else {
       //   console.log((await response).status);
       alert("Wrong Credentials!!");
@@ -31,7 +37,7 @@ const Login = () => {
 
   return (
     <form className="login" onSubmit={login}>
-      <h1>Login to Enter the Oasis...</h1>
+      <h1>Login to enter the Oasis...</h1>
       <input
         type="text"
         placeholder="username"
